@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'gypsykiller';
+  src: url('../fonts/gypsykiller.ttf');
+}
+
+body { overflow-x: hidden; }
+
+#header { text-align: center; }
+#header h1 { font-family: 'gypsykiller', arial, sans-serif; }
+
+#all { display:none; }
+
+#container {
+  position: relative;
+  margin: auto;
+  width: 528px;
+  height: 850px;
+}
+
+#canvasContainer {
+    display: block;
+} 
+
+#status { display: block; }
+
+#scrollme { text-align: center; }
+
+#config {
+  display: block;
+  padding: 1.4em;
+}
+
+#main {
+  display: block;
+}
+
+.clear {
+  clear: both;
+}
+
+#footer {
+  width: 100%;
+  bottom: 0;
+  position: relative;
+}
+
+#footer p {
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .sm-only { display: none; }
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+
+}
