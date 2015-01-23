@@ -8,6 +8,35 @@ body { overflow-x: hidden; }
 #header { text-align: center; }
 #header h1 { font-family: 'gypsykiller', arial, sans-serif; }
 
+#progress {
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 25%;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  font-family: 'gypsykiller', arial, sans-serif; 
+}
+#progress h1 {
+  font-size: 5em;
+}
+
+.progressBar { 
+  width: 100%;
+  display: block;
+}
+.total {
+  width: 100%;
+  height: 1em;
+  background: #000;
+}
+.loaded {
+  width: 0%;
+  height: 100%;
+  background: #999;
+}
+
 #all { display:none; }
 
 #container {

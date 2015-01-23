@@ -11,10 +11,13 @@ var layer = {};
 var attr = 'a';
 
 var loadedImages = 0;
-var numberImages = 25;
+var numberImages = 24;
 
 function isLoaded(){
   loadedImages++;
+  var percent = Math.floor(loadedImages / numberImages * 100);
+  $('.loaded').width(percent.toString()+'%');
+  $('#progress span').text(percent.toString());
   if (loadedImages >= numberImages) loaded();
 }
 
@@ -31,6 +34,7 @@ function preload() {
   $('#status').show();
 
   var assets = [
+  { name: "font_gypsy", src: fonts + "gypsykiller.ttf" },
   { name: "l1_a", src: images + "creator/ardor/layer1.png" },
   { name: "l1_w", src: images + "creator/whirlwind/layer1.png" },
   { name: "l1_t", src: images + "creator/thunder/layer1.png" },
@@ -55,8 +59,7 @@ function preload() {
   { name: "l4_t", src: images + "creator/thunder/layer4.png" },
   { name: "l4_l", src: images + "creator/light/layer4.png" },
   { name: "l4_d", src: images + "creator/dark/layer4.png" },  
-  { name: "custom", src: "" },
-  { name: "font_gypsy", src: fonts + "gypsykiller.ttf" }
+  { name: "custom", src: "" }
   ];
   
 assets.forEach(function(entry) {
@@ -64,7 +67,8 @@ assets.forEach(function(entry) {
   if (entry.name == "font_gypsy") {
     img[entry.name].onerror = function() { isLoaded(); }
   } else {
-	img[entry.name].onload = function(){ isLoaded(); }
+	img[entry.name].onload = function(){
+		isLoaded(); }
   }
   img[entry.name].src = entry.src;
 });
@@ -81,6 +85,22 @@ layer = {
 } // End preload function
 
 function loaded() {
+
+$('#fileUpload').on('change', function (event) {
+    if ( this.files && this.files[0] ) {
+        var fr = new FileReader();
+        fr.onload = function(e) {
+           var image = new Image();
+           image.onload = function() {
+		     img['custom'] = image;
+		     repaint();
+           };
+           image.src = e.target.result;
+        };       
+        fr.readAsDataURL( this.files[0] );
+	}
+	$('.custom').prop('disabled', false);
+});
   
 var cusFile = document.getElementById('fileUpload');
 cusFile.addEventListener("change", readImage, false);
@@ -112,10 +132,8 @@ cusX.addEventListener('change', repaint, false);
 var cusY = document.getElementById('cusY');
 cusY.addEventListener('change', repaint, false);
 
-$('#loader').hide();
-$('#statusMsg').html('Start creating!');
+$('#progress').hide();
 $('#all').show();
-$('#status').hide();
 
 // Disable the character transformation until one is uploaded
 $('.custom').prop('disabled', true);		
@@ -251,7 +269,6 @@ function repaint() {
       ctx.closePath();
       ctx.restore();
 
-      $('#status').hide();
 }
 
 // Read in custom image
@@ -272,9 +289,11 @@ function readImage() {
 }
 
 // Prevent typing into number inputs
+/*
 $("[type='number']").keypress(function (evt) {
     evt.preventDefault();
 });
+*/
 
 }
 

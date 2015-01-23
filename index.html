@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <head>
 <title>Rip-off Soccer Cards</title>
 <meta name="description" src="Create rip-off soccer cards"/>
@@ -8,22 +8,20 @@
 </head>
 <body>
 
-<div class="page-header" id="header">
-  <h1>Rip-off Soccer Cards</h1>
+<div id="progress">
+  <div class="panel panel-default">
+	<div class="panel-body">
+     <h1><span>0</span>%</h1>
+     <div class="progressBar total"><div class="progressBar loaded"></div></div>
+    </div>
+  </div>
 </div>
 
 <div id="all">
 
-  <div id="status">
-    <div class="panel panel-default">
-	  <div class="panel-body">
-	   <div id="statusMain">
-	    <div id="loader"><img src="assets/img/ajax-loader.gif"></div>
-	    <div id="statusMsg"><p>Loading...</p></div>
-	   </div>
-	  </div>
-	</div>
-  </div>
+<div class="page-header" id="header">
+  <h1>Rip-off Soccer Cards</h1>
+</div>
   
   <div id="scrollme">
    <div class="panel panel-default sm-only">
@@ -99,6 +97,8 @@
       <div class="col-md-10 col-sm-10 col-xs-10">
        <input type='text' value='Name' id='cusTextName' />
       </div>
+	 </div>
+	 <div class="row">
       <div class="col-md-2 col-sm-2 col-xs-2">
        <label>Level: </label>
       </div>
@@ -161,7 +161,7 @@
    Gypsy Killer font by <a href="http://www.iconian.com/">Iconian Fonts</a></p>
   </footer>
 
-<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery-1.11.2.min.js"></script>
 <script src="assets/js/jQuery.html5Loader.min.js"></script>
 <script src="dist/js/bootstrap.min.js"></script>
 <script src="assets/js/script.min.js"></script>
