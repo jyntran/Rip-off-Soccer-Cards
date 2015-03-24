@@ -166,6 +166,8 @@ function repaint() {
       $('#loader').show();
       $('#statusMsg').html('Working...');
 
+	  checkValues();
+	  
       layer['1'] = img['l1_'+attr];
       layer['2'] = img['l2'];
       layer['3a'] = img['l3a_'+attr];
@@ -273,7 +275,7 @@ function repaint() {
 
 // Read in custom image
 function readImage() {
-    if ( this.files && this.files[0] ) {
+    if (this.files && this.files[0]) {
         var fr = new FileReader();
         fr.onload = function(e) {
            var image = new Image();
@@ -287,6 +289,16 @@ function readImage() {
 	}
 	$('.custom').prop('disabled', false);
 }
+
+// Check values so that they don't go over the specified range
+function checkValues() {
+	// Rank value
+	if (cusTextRank.value > 7) {
+		cusTextRank.value = 7;
+	} else if (cusTextRank.value < 2) {
+		cusTextRank.value = 2;
+	}
+}	
 
 // Prevent typing into number inputs
 /*
